@@ -68,3 +68,21 @@ model Session {
   deletedAt        DateTime? @db.Timestamptz(3)
   deletedBy        String?   @db.VarChar(255)
 }
+
+model Note {
+  id        Int       @id @default(autoincrement())
+  uuid      String    @unique @db.VarChar(1000)
+  title     String    @db.VarChar(500)
+  content   String    @db.Text
+  tags      String[]  @db.VarChar(100)
+  isPinned  Boolean   @default(false)
+  createdAt DateTime? @default(now()) @db.Timestamptz(3)
+  createdBy String?   @db.VarChar(255)
+  updatedAt DateTime? @default(now()) @updatedAt @db.Timestamptz(3)
+  updatedBy String?   @db.VarChar(255)
+  deletedAt DateTime? @db.Timestamptz(3)
+  deletedBy String?   @db.VarChar(255)
+
+  @@index([isPinned, createdAt])
+  @@index([isPinned, updatedAt])
+}

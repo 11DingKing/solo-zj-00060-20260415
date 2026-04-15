@@ -62,6 +62,7 @@ class HttpExceptionFilter implements ExceptionFilterMethods {
       InvalidAuthenticationUsernameException: invalidCredentialsHandler,
       InvalidAuthenticationCredentialsException: invalidCredentialsHandler,
       UserNotExistsException: userNotFoundHandler,
+      NoteNotExistsException: userNotFoundHandler,
       InvalidSessionException: invalidSessionHandler,
       DefaultException: defaultHandler
     };
